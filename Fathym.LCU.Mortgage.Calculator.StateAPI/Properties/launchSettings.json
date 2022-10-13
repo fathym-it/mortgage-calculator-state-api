@@ -1,0 +1,14 @@
+{
+  "profiles": {
+    "Fathym.LCU.Mortgage.Calculator.StateAPI": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7088"
+    },
+    "Docker": {
+      "commandName": "Docker",
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
+      "httpPort": 30039,
+      "useSSL": false
+    }
+  }
+}
