@@ -7,6 +7,8 @@ namespace FinaTech.SensitivityModel.StateAPI.State
         #region Properties
         public virtual bool Calculating { get; set; }
 
+        public virtual string CurrentCalculator { get; set; }
+
         public virtual double HomeValue { get; set; }
 
         public virtual double InterestRate { get; set; }

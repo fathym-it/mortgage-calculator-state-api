@@ -174,7 +174,7 @@ namespace FinaTech.SensitivityModel.StateAPI.State
 
                 response.Status = response.Model != null ? Status.Success : Status.NotLocated;
 
-                await signalStateUpdate(client, signalRMessages, calcLookup);
+                //await signalStateUpdate(client, signalRMessages, calcLookup);
 
                 return response;
             }).Run();

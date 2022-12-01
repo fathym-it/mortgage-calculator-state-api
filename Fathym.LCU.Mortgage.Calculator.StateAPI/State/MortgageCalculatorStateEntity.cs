@@ -28,7 +28,7 @@ namespace FinaTech.SensitivityModel.StateAPI.State
         #region Constructors
         public MortgageCalculatorStateEntity()
         {
-            calculateMortgagePayment();
+            //calculateMortgagePayment();
         }
         #endregion
 
@@ -37,6 +37,9 @@ namespace FinaTech.SensitivityModel.StateAPI.State
         {
             if (state != null)
             {
+                if (state?.CurrentCalculator != null)
+                    CurrentCalculator = state.CurrentCalculator;
+
                 if (state?.HomeValue != null)
                     HomeValue = state.HomeValue;
 
@@ -96,12 +99,10 @@ namespace FinaTech.SensitivityModel.StateAPI.State
 
             var ir = (InterestRate / 12) / 100;
 
-            // console.log("IR = ", ir);
-
             var numerator = ir * Math.Pow(1 + ir, totalMonths);
 
             var denominator = Math.Pow(1 + ir, totalMonths) - 1;
-
+            
             MonthlyPayment = LoanAmount * (numerator / denominator);          
         }
         #endregion
