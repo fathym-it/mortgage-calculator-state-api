@@ -2,7 +2,7 @@
 
 namespace FinaTech.SensitivityModel.StateAPI.State
 {
-    public class MortgageCalculatorState : LCUStateEntity
+    public class MortgageCalculatorState
     {
         #region Properties
         public virtual bool Calculating { get; set; }

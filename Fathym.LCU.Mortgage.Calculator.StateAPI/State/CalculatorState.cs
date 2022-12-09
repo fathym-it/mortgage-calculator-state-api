@@ -2,7 +2,7 @@
 
 namespace FinaTech.SensitivityModel.StateAPI.State
 {
-    public class CalculatorState : LCUStateEntity
+    public class CalculatorState
     {
         #region Properties
         public virtual string Lookup { get; set; }
