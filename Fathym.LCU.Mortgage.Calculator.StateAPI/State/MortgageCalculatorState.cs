@@ -25,7 +25,7 @@ namespace FinaTech.SensitivityModel.StateAPI.State
         #region Constructors
         public MortgageCalculatorState()
         {
-            LoanTerm = 30;
+            
         }
         #endregion
     }

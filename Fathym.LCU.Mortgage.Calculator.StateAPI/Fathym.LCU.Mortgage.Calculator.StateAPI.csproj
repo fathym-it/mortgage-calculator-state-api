@@ -6,8 +6,9 @@
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
   <ItemGroup>
-	<PackageReference Include="Fathym.LCU.Services.StateAPIs.Durable" Version="3.3.5" />
-    <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="4.1.3" />
+	<PackageReference Include="Fathym.LCU.Services.StateAPIs.Durable" Version="3.3.33-netstandard" />
+	  <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.DurableTask" Version="2.9.0" />
+    <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="4.1.1" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
   </ItemGroup>
   <ItemGroup>

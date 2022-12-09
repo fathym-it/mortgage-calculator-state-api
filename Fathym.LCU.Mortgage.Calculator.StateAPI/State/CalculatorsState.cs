@@ -18,13 +18,4 @@ namespace FinaTech.SensitivityModel.StateAPI.State
         }
         #endregion
     }
-
-    public class CalculatorState : LCUStateEntity
-    {
-        #region Properties
-        public virtual string Lookup { get; set; }
-
-        public virtual string Name { get; set; }
-        #endregion
-    }
 }

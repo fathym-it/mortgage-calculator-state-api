@@ -29,13 +29,13 @@ namespace FinaTech.SensitivityModel.StateAPI.State
         #region API Methods
         #region Calculators State API Methods
         #region Routes
-        private const string createCalcStateRoute = nameof(CalculatorsStateEntity);
+        private const string createCalcStateRoute = nameof(UserCalculatorsEntityStore);
 
-        private const string getCStateRoute = nameof(CalculatorsStateEntity);
+        private const string getCStateRoute = nameof(UserCalculatorsEntityStore);
 
-        private const string removeCalculatorRoute = nameof(CalculatorsStateEntity) + "/{calcLookup}";
+        private const string removeCalculatorRoute = nameof(UserCalculatorsEntityStore) + "/{calcLookup}";
 
-        private const string setCurrentCalculatorRoute = nameof(CalculatorsStateEntity) + "/current";
+        private const string setCurrentCalculatorRoute = nameof(UserCalculatorsEntityStore) + "/current";
         #endregion
 
         [FunctionName(nameof(CalculatorsStateEntity_CreateCalculator))]
@@ -44,7 +44,7 @@ namespace FinaTech.SensitivityModel.StateAPI.State
             [DurableClient] IDurableEntityClient client,
             [SignalR(HubName = "SensitivityModelHub")] IAsyncCollector<SignalRMessage> signalRMessages)
         {
-            return await withAPIBoundary<CalculatorState, BaseResponse<CalculatorsStateEntity>>(req, async (request, response) =>
+            return await withAPIBoundary<CalculatorState, BaseResponse<UserCalculatorsEntityStore>>(req, async (request, response) =>
             {
                 var entLookup = "test";// req.GetEnterpriseLookup();
 
@@ -55,7 +55,7 @@ namespace FinaTech.SensitivityModel.StateAPI.State
                 if (request.Lookup.IsNullOrEmpty())
                     request.Lookup = Guid.NewGuid().ToString();
 
-                var entityId = new EntityId(nameof(CalculatorsStateEntity), key);
+                var entityId = new EntityId(nameof(UserCalculatorsEntityStore), key);
 
                 await client.SignalEntityAsync<ICalculatorsState>(entityId, async (calc) =>
                 {
@@ -74,7 +74,7 @@ namespace FinaTech.SensitivityModel.StateAPI.State
             [DurableClient] IDurableEntityClient client,
             [SignalR(HubName = "SensitivityModelHub")] IAsyncCollector<SignalRMessage> signalRMessages)
         {
-            return await withAPIBoundary<BaseResponse<CalculatorsStateEntity>>(req, async (response) =>
+            return await withAPIBoundary<BaseResponse<UserCalculatorsEntityStore>>(req, async (response) =>
             {
                 var entLookup = "test";// req.GetEnterpriseLookup();
 
@@ -82,9 +82,9 @@ namespace FinaTech.SensitivityModel.StateAPI.State
 
                 var key = $"{entLookup}|{username}";
 
-                var entityId = new EntityId(nameof(CalculatorsStateEntity), key);
+                var entityId = new EntityId(nameof(UserCalculatorsEntityStore), key);
 
-                var state = await client.ReadEntityStateAsync<CalculatorsStateEntity>(entityId);
+                var state = await client.ReadEntityStateAsync<UserCalculatorsEntityStore>(entityId);
 
                 response.Model = state.EntityState;
 
@@ -102,7 +102,7 @@ namespace FinaTech.SensitivityModel.StateAPI.State
             [DurableClient] IDurableEntityClient client,
             [SignalR(HubName = "SensitivityModelHub")] IAsyncCollector<SignalRMessage> signalRMessages, string calcLookup)
         {
-            return await withAPIBoundary<BaseResponse<CalculatorsStateEntity>>(req, async (response) =>
+            return await withAPIBoundary<BaseResponse<UserCalculatorsEntityStore>>(req, async (response) =>
             {
                 var entLookup = "test";// req.GetEnterpriseLookup();
 
@@ -110,7 +110,7 @@ namespace FinaTech.SensitivityModel.StateAPI.State
 
                 var key = $"{entLookup}|{username}";
 
-                var entityId = new EntityId(nameof(CalculatorsStateEntity), key);
+                var entityId = new EntityId(nameof(UserCalculatorsEntityStore), key);
 
                 await client.SignalEntityAsync<ICalculatorsState>(entityId, async (calc) =>
                 {
@@ -129,7 +129,7 @@ namespace FinaTech.SensitivityModel.StateAPI.State
             [DurableClient] IDurableEntityClient client,
             [SignalR(HubName = "SensitivityModelHub")] IAsyncCollector<SignalRMessage> signalRMessages)
         {
-            return await withAPIBoundary<MetadataModel, BaseResponse<CalculatorsStateEntity>>(req, async (request, response) =>
+            return await withAPIBoundary<MetadataModel, BaseResponse<UserCalculatorsEntityStore>>(req, async (request, response) =>
             {
                 var entLookup = "test";// req.GetEnterpriseLookup();
 
@@ -137,7 +137,7 @@ namespace FinaTech.SensitivityModel.StateAPI.State
 
                 var key = $"{entLookup}|{username}";
 
-                var entityId = new EntityId(nameof(CalculatorsStateEntity), key);
+                var entityId = new EntityId(nameof(UserCalculatorsEntityStore), key);
 
                 await client.SignalEntityAsync<ICalculatorsState>(entityId, async (calc) =>
                 {
